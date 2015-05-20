@@ -1,15 +1,37 @@
-## Put comments here that give an overall description of what your
-## functions do
+##Coursera: R Programming I -- Project Assignment #2
 
-## Write a short comment describing this function
+##Write a function that calculates and caches means so they can be 
+##retrieved later, if needed.
+
+#makeCacheMatrix creates a matrix so the inverse can be cached
 
 makeCacheMatrix <- function(x = matrix()) {
+              y <- NULL
+         
+              create <- function(z) {
+                x <<- z
+                y <<- NULL
+              }
+         
+              get <- function() x
+              createinv <- function(inv) y <<- inv
+              getinv <- function() y
+              list(create = create, get = get, createinv = createinv, getinv = getinv)
 
 }
 
-
-## Write a short comment describing this function
+#Return the inverse of the matrix created above
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+        InvMatrix <- x$getinv()
+        
+        if(!is.null(InvMatrix)) {
+                message("getting cached data")
+                return(InvMatrix)
+        }
+        
+        data <- x$get()
+        InvMatrix <- solve(data, ...)
+        x$createinv(InvMatrix)
+        InvMatrix
 }
