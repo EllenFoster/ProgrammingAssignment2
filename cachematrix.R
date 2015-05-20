@@ -1,9 +1,6 @@
 ##Coursera: R Programming I -- Project Assignment #2
 
-##Write a function that calculates and caches means so they can be 
-##retrieved later, if needed.
-
-#makeCacheMatrix creates a matrix so the inverse can be cached
+#makeCacheMatrix creates a matrix and caches the inverse
 
 makeCacheMatrix <- function(x = matrix()) {
               y <- NULL
